@@ -30,7 +30,7 @@ class DirectoryLoader {
         }
     }
     
-    init (dirToLoad: String) {
+    init (_ dirToLoad: String) {
         
         currentDir = dirToLoad
         loadDir(currentDir)

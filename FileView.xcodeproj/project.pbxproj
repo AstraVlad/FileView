@@ -10,6 +10,7 @@
 		4C222EF31D4FD5BA00236B05 /* PanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C222EF21D4FD5BA00236B05 /* PanelViewController.swift */; };
 		4C222EFA1D5088F600236B05 /* OnePanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C222EF81D5088F600236B05 /* OnePanelViewController.swift */; };
 		4C222EFB1D5088F600236B05 /* OnePanelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C222EF91D5088F600236B05 /* OnePanelViewController.xib */; };
+		4C222EFD1D50DCC600236B05 /* OnePanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C222EFC1D50DCC600236B05 /* OnePanelView.swift */; };
 		4CFB53E51D4F651E00467D65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFB53E41D4F651E00467D65 /* AppDelegate.swift */; };
 		4CFB53E71D4F651E00467D65 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFB53E61D4F651E00467D65 /* ViewController.swift */; };
 		4CFB53E91D4F651E00467D65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CFB53E81D4F651E00467D65 /* Assets.xcassets */; };
@@ -39,8 +40,9 @@
 
 /* Begin PBXFileReference section */
 		4C222EF21D4FD5BA00236B05 /* PanelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelViewController.swift; sourceTree = "<group>"; };
-		4C222EF81D5088F600236B05 /* OnePanelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnePanelViewController.swift; sourceTree = "<group>"; };
+		4C222EF81D5088F600236B05 /* OnePanelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnePanelViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
 		4C222EF91D5088F600236B05 /* OnePanelViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnePanelViewController.xib; sourceTree = "<group>"; };
+		4C222EFC1D50DCC600236B05 /* OnePanelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnePanelView.swift; sourceTree = "<group>"; };
 		4CFB53E11D4F651E00467D65 /* FileView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FileView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CFB53E41D4F651E00467D65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CFB53E61D4F651E00467D65 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				4CFB53EA1D4F651E00467D65 /* Main.storyboard */,
 				4CFB53ED1D4F651E00467D65 /* Info.plist */,
 				4C222EF81D5088F600236B05 /* OnePanelViewController.swift */,
+				4C222EFC1D50DCC600236B05 /* OnePanelView.swift */,
 				4C222EF91D5088F600236B05 /* OnePanelViewController.xib */,
 			);
 			path = FileView;
@@ -272,6 +275,7 @@
 				4CFB53E71D4F651E00467D65 /* ViewController.swift in Sources */,
 				4CFB53E51D4F651E00467D65 /* AppDelegate.swift in Sources */,
 				4CFB54101D4F6AA900467D65 /* SplitViewController.swift in Sources */,
+				4C222EFD1D50DCC600236B05 /* OnePanelView.swift in Sources */,
 				4C222EFA1D5088F600236B05 /* OnePanelViewController.swift in Sources */,
 				4C222EF31D4FD5BA00236B05 /* PanelViewController.swift in Sources */,
 			);

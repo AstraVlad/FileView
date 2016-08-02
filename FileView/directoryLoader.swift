@@ -56,6 +56,8 @@ class DirectoryLoader {
         
         for theURL in returnedDir!{
             do {
+                let lastPartOfThePath = theURL.pathComponents![(theURL.pathComponents?.count)!-1]
+                if lastPartOfThePath[lastPartOfThePath.startIndex] == "." {continue}
                 let attributes = try NSFileManager.defaultManager().attributesOfItemAtPath(theURL.path!) as NSDictionary
                 //let properties = try theURL.resourceValuesForKeys(requiredAttributes)
                 let file = fileDetails(path: theURL.path!, name: theURL.lastPathComponent!, icon: "", size: attributes[NSFileSize]! as! Int, lastChange: attributes[NSFileModificationDate] as! NSDate, permissions: attributes[NSFilePosixPermissions]! as! Int, isFolder: (attributes[NSFileType] as! String) == NSFileTypeDirectory)

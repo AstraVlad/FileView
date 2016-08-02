@@ -49,8 +49,11 @@ class OnePanelViewController: NSViewController {
 	func updateStatus(){
 		
 		let itemsSelected = tableOutlet.selectedRowIndexes.count
-		if (itemsSelected != 1) {
+		
+		if (itemsSelected == 0) {
 			selectedObjectLabel.title = ""
+		} else if (itemsSelected > 1 ) {
+			selectedObjectLabel.title = "\(itemsSelected) objects selected"
 		} else {
 			selectedObjectLabel.title = dataSource.dirContents[tableOutlet.selectedRow].name
 		}

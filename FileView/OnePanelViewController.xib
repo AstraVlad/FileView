@@ -8,10 +8,8 @@
         <customObject id="-2" userLabel="File's Owner" customClass="OnePanelViewController" customModule="FileView" customModuleProvider="target">
             <connections>
                 <outlet property="currentDirectoryLabel" destination="Iii-ek-SK3" id="Lqm-5O-ONt"/>
-                <outlet property="currentDirectoryOutlet" destination="iZj-fV-59S" id="wvU-kE-g4h"/>
                 <outlet property="onePanelView" destination="Hz6-mo-xeY" id="4qB-bD-BSH"/>
                 <outlet property="selectedObjectLabel" destination="SD9-ba-A9R" id="Gct-Wg-aDf"/>
-                <outlet property="selectedObjectOutlet" destination="tK0-bq-Uoe" id="Er2-2a-OjC"/>
                 <outlet property="tableOutlet" destination="I22-ku-rr1" id="JfB-cF-tbm"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>

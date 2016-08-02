@@ -18,10 +18,10 @@ class SplitViewController: NSSplitViewController {
     override func viewWillAppear() {
         super.viewWillAppear()
         
-     //   splitView.setPosition(view.bounds.width / 2.0, ofDividerAtIndex: 0)
+       splitView.setPosition(view.bounds.width / 2.0, ofDividerAtIndex: 0)
     }
     
-  override func splitView(splitView: NSSplitView, constrainSplitPosition proposedPosition: CGFloat, ofSubviewAt dividerIndex: Int) -> CGFloat {
+  /*override func splitView(splitView: NSSplitView, constrainSplitPosition proposedPosition: CGFloat, ofSubviewAt dividerIndex: Int) -> CGFloat {
         return view.bounds.width / 2.0
-  }
+  }*/
 }

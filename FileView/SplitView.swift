@@ -1,22 +1,21 @@
 //
-//  OnePanelView.swift
+//  SplitView.swift
 //  FileView
 //
-//  Created by Vladimir Feldman on 02.08.16.
+//  Created by Vladimir Feldman on 03.08.16.
 //  Copyright © 2016 Vladimir Feldman. All rights reserved.
 //
 
 import Cocoa
 
-class OnePanelView: NSView {
+class SplitView: NSSplitView {
     
-    
-  override func drawRect(dirtyRect: NSRect) {
+      override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
 
         // Drawing code here.
     }
     
-    
+   
     
 }

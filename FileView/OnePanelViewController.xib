@@ -16,7 +16,7 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView identifier="OnePanelView" id="Hz6-mo-xeY">
+        <customView identifier="OnePanelView" id="Hz6-mo-xeY" customClass="OnePanelView" customModule="FileView" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="664" height="314"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>

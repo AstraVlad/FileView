@@ -28,6 +28,10 @@ class OnePanelViewController: NSViewController {
             tableOutlet.reloadData()
         }
     }
+	
+	let root: String = "/"
+	
+	var fileTable: NSTableView {return tableOutlet != nil ? tableOutlet : nil}
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +47,7 @@ class OnePanelViewController: NSViewController {
         }
 		if (currentDirectoryLabel != nil) {currentDirectoryLabel.title = dataSource.currentDir}
 		if (selectedObjectLabel != nil) {updateStatus()}
-        
+						
     }
 	
 	func updateStatus(){
@@ -62,6 +66,14 @@ class OnePanelViewController: NSViewController {
 	
 	func tableViewDoubleClick(sender: AnyObject) {
 		
+		processElement()
+		
+	}
+	
+	private func processElement(){
+		
+		if tableOutlet.selectedRowIndexes.count > 1 {return}
+		
 		let item: fileDetails!
 		
 		if (tableOutlet.selectedRow >= 0) && (tableOutlet.selectedRow < dataSource.dirContents.count) {
@@ -76,13 +88,35 @@ class OnePanelViewController: NSViewController {
 			tableOutlet.reloadData()
 			currentDirectoryLabel.title = dataSource.currentDir
 			
+			
 		} else {
 			
 			NSWorkspace.sharedWorkspace().openURL(NSURL(fileURLWithPath: item.path))
 		}
+	}
+	
+	private func stepUp(){
+		if dataSource.currentDir != root {
+			tableOutlet.selectRowIndexes(NSIndexSet(index: 1), byExtendingSelection: false)
+			processElement()
+		}
+	}
+	
+	override func keyDown(theEvent: NSEvent){
+		
+		interpretKeyEvents([theEvent])
+		
 		
 	}
 	
+	override func insertNewline(sender: AnyObject?){
+		
+		processElement()
+	}
+	
+	override func deleteBackward(sender: AnyObject?){
+		stepUp()
+	}
 	
 }
 

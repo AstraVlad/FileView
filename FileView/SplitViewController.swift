@@ -14,24 +14,25 @@ class SplitViewController: NSSplitViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        }
+    }
     
     override func viewWillAppear() {
         super.viewWillAppear()
-        splitView.setPosition(view.bounds.width / 2.0, ofDividerAtIndex: 0)
+        
     }
     
     override func viewDidAppear() {
-        super.viewDidAppear()        
+        super.viewDidAppear()
+        splitView.setPosition(view.bounds.width / 2.0, ofDividerAtIndex: 0)
     }
     
     
-    override func keyDown(theEvent: NSEvent){
-        //print(theEvent.keyCode)
+  /*  override func keyDown(theEvent: NSEvent){
+  
         interpretKeyEvents([theEvent])
         //let r: NSResponder!
         
-    }
+    }*/
     
     override func insertTab(sender: AnyObject?) {
         

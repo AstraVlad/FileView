@@ -12,11 +12,12 @@ import AppKit
 struct fileDetails{
     var path: String
     var name: String
-    var icon: String
+    var icon: NSImage?
     var size: Int
     var lastChange: NSDate
     var permissions: Int
     var isFolder: Bool
+    var url: NSURL
 }
 
 class DirectoryLoader {
@@ -41,6 +42,9 @@ class DirectoryLoader {
     func loadDir(dirToLoad: String) {
         
         var returnedDir: [NSURL]?
+        var isFolder = false
+        var theImage: NSImage?
+        
        // let requiredAttributes = [NSURLLocalizedNameKey, NSURLEffectiveIconKey,NSURLTypeIdentifierKey,NSURLCreationDateKey,NSURLFileSizeKey, NSURLIsDirectoryKey,NSURLIsPackageKey]
         
         let theURL: NSURL = NSURL.init(fileURLWithPath: dirToLoad, isDirectory: true)
@@ -56,19 +60,40 @@ class DirectoryLoader {
         
         for theURL in returnedDir!{
             do {
+                
+                //If file name starts with dor (.) or $ then do not show that file
                 let lastPartOfThePath = theURL.pathComponents![(theURL.pathComponents?.count)!-1]
-                if lastPartOfThePath[lastPartOfThePath.startIndex] == "." {continue}
+                if (lastPartOfThePath[lastPartOfThePath.startIndex] == ".") || (lastPartOfThePath[lastPartOfThePath.startIndex] == "$") {continue}
+                
                 let attributes = try NSFileManager.defaultManager().attributesOfItemAtPath(theURL.path!) as NSDictionary
                 //let properties = try theURL.resourceValuesForKeys(requiredAttributes)
-                let file = fileDetails(path: theURL.path!, name: theURL.lastPathComponent!, icon: "", size: attributes[NSFileSize]! as! Int, lastChange: attributes[NSFileModificationDate] as! NSDate, permissions: attributes[NSFilePosixPermissions]! as! Int, isFolder: (attributes[NSFileType] as! String) == NSFileTypeDirectory)
+                
+                
+                
+                switch (attributes[NSFileType] as! String) {
+                case NSFileTypeDirectory:
+                    isFolder = true
+                    theImage = NSImage(named:  NSImageNameFolder)
+                case NSFileTypeSymbolicLink:
+                    isFolder =  true
+                    theImage = NSImage(named: NSImageNameShareTemplate)
+                default:
+                    isFolder = false
+                    theImage = NSWorkspace.sharedWorkspace().iconForFileType(theURL.pathExtension!)
+                }
+                
+                //let isFolder = (attributes[NSFileType] as! String) == NSFileTypeDirectory
+                
+                
+                let file = fileDetails(path: theURL.path!, name: theURL.lastPathComponent!, icon: theImage, size: attributes[NSFileSize]! as! Int, lastChange: attributes[NSFileModificationDate] as! NSDate, permissions: attributes[NSFilePosixPermissions]! as! Int, isFolder: isFolder, url: theURL)
+                
                 dirContents.append(file)
                 // dirContents?.append(fileDetails(name: properties[NSURLLocalizedNameKey] as! String, icon: properties[NSURLEffectiveIconKey] as! NSImage, size: properties[NSURLFileSizeKey] as! Int, lastChange: attributes[NSFileModificationDate] as! NSDate, permissions: attributes[NSFilePosixPermissions]! as! Int, isFolder: properties[NSURLIsDirectoryKey] as! Bool))
                 
             } catch let error as NSError {
                 print(error.localizedDescription)
             }
-         
-        }
+                 }
         
        
     }
@@ -77,14 +102,14 @@ class DirectoryLoader {
         
         dirContents.removeAll()
         if url.path == "/" {return}
-        dirContents.append(fileDetails(path: "/", name: "/", icon: "", size: 0, lastChange: NSDate(), permissions: 0, isFolder: true))
+        dirContents.append(fileDetails(path: "/", name: "/", icon: nil, size: 0, lastChange: NSDate(), permissions: 0, isFolder: true, url: NSURL(string: "/")!))
         var upDir = ""
         for index in 0..<(url.pathComponents!.count-1) {
             upDir.appendContentsOf(url.pathComponents![index])
             if index > 0 {upDir.appendContentsOf("/")}
         
         }
-        dirContents.append(fileDetails(path: upDir, name: "...", icon: "", size: 0, lastChange: NSDate(), permissions: 0, isFolder: true))
+        dirContents.append(fileDetails(path: upDir, name: "...", icon: nil, size: 0, lastChange: NSDate(), permissions: 0, isFolder: true, url: NSURL(string: upDir)!))
         
     }
     

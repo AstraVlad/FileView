@@ -658,12 +658,12 @@
                         <value key="minSize" type="size" width="480" height="270"/>
                     </window>
                     <connections>
-                        <segue destination="4Xy-rw-7dw" kind="relationship" relationship="window.shadowedContentViewController" id="KJJ-Ce-1Jl"/>
+                        <segue destination="ivx-Sr-hMi" kind="relationship" relationship="window.shadowedContentViewController" id="9YF-Gl-NDA"/>
                     </connections>
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="250"/>
+            <point key="canvasLocation" x="75" y="214"/>
         </scene>
         <!--twoPanelView-->
         <scene sceneID="mSN-32-Crf">
@@ -686,7 +686,91 @@
                 </splitViewController>
                 <customObject id="Dpb-7h-HkT" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="681"/>
+            <point key="canvasLocation" x="577" y="637"/>
+        </scene>
+        <!--HorisontalSplitViewController-->
+        <scene sceneID="frs-En-dtr">
+            <objects>
+                <splitViewController title="HorisontalSplitViewController" id="ivx-Sr-hMi" customClass="HorisontalSplitViewController" customModule="FileView" customModuleProvider="target" sceneMemberID="viewController">
+                    <splitViewItems>
+                        <splitViewItem holdingPriority="1000" id="9a7-fT-ebq"/>
+                        <splitViewItem id="FkO-E0-98x"/>
+                        <splitViewItem holdingPriority="1000" id="Hzz-eb-2ND"/>
+                    </splitViewItems>
+                    <splitView key="splitView" arrangesAllSubviews="NO" dividerStyle="thin" id="rz3-9v-smF">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </splitView>
+                    <connections>
+                        <segue destination="6RM-61-O8r" kind="relationship" relationship="splitItems" id="7bi-iy-15w"/>
+                        <segue destination="4Xy-rw-7dw" kind="relationship" relationship="splitItems" id="Cks-Ug-Lpe"/>
+                        <segue destination="6Wm-CZ-NFX" kind="relationship" relationship="splitItems" id="qez-hb-QnB"/>
+                    </connections>
+                </splitViewController>
+                <customObject id="Cr7-ox-CXL" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2" y="637"/>
+        </scene>
+        <!--Toolbar View Controller-->
+        <scene sceneID="UZI-ch-RQy">
+            <objects>
+                <viewController id="6RM-61-O8r" customClass="ToolbarViewController" customModule="FileView" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" identifier="toolbarView" autoresizesSubviews="NO" verticalCompressionResistancePriority="1000" id="NVP-Gt-ZrC">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="50"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button identifier="homeButton" translatesAutoresizingMaskIntoConstraints="NO" id="KrT-a5-kdT">
+                                <rect key="frame" x="10" y="1" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="Hb9-CT-FjB"/>
+                                </constraints>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSComputer" imagePosition="overlaps" alignment="center" borderStyle="border" inset="2" id="RrA-gd-6w5">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="rootPressed:" target="6RM-61-O8r" id="vIM-wp-2mA"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="KrT-a5-kdT" firstAttribute="centerY" secondItem="NVP-Gt-ZrC" secondAttribute="centerY" id="8vZ-uw-odN"/>
+                            <constraint firstItem="KrT-a5-kdT" firstAttribute="top" secondItem="NVP-Gt-ZrC" secondAttribute="top" constant="1" id="fRS-Kb-GKp"/>
+                            <constraint firstItem="KrT-a5-kdT" firstAttribute="leading" secondItem="NVP-Gt-ZrC" secondAttribute="leading" constant="10" id="u3x-Qb-let"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="HpL-Ti-B1f" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="179" y="981"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="xTr-vP-tDx">
+            <objects>
+                <viewController id="6Wm-CZ-NFX" sceneMemberID="viewController">
+                    <view key="view" id="RW7-V4-2bt">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="50"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mIg-KO-MqA">
+                                <rect key="frame" x="10" y="28" width="430" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" drawsBackground="YES" usesSingleLineMode="YES" id="jlW-xa-nUJ">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="mIg-KO-MqA" secondAttribute="trailing" constant="10" id="XNo-qO-Dzm"/>
+                            <constraint firstItem="mIg-KO-MqA" firstAttribute="top" secondItem="RW7-V4-2bt" secondAttribute="top" constant="5" id="kEz-lb-RYc"/>
+                            <constraint firstItem="mIg-KO-MqA" firstAttribute="leading" secondItem="RW7-V4-2bt" secondAttribute="leading" constant="10" id="yDA-Rd-HeH"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="x6c-RS-Z7x" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-319" y="981"/>
         </scene>
         <!--One Panel View Controller-->
         <scene sceneID="OE7-uP-s3M">
@@ -699,7 +783,7 @@
                 </viewController>
                 <customObject id="s2c-lY-BRL" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="730" y="422"/>
+            <point key="canvasLocation" x="1172" y="422"/>
         </scene>
         <!--One Panel View Controller-->
         <scene sceneID="Mks-qa-3dc">
@@ -712,7 +796,10 @@
                 </viewController>
                 <customObject id="jNa-ci-HMc" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="732" y="854"/>
+            <point key="canvasLocation" x="1172" y="856"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="NSComputer" width="32" height="32"/>
+    </resources>
 </document>

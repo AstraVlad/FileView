@@ -12,9 +12,25 @@ class OnePanelView: NSView {
     
     let tableViewTag = 1
     
+    private var ID: Int?
+        
     func getFocus(){
         self.window?.makeFirstResponder(self.viewWithTag(tableViewTag))
     
+    }
+    
+    func setID (newID: Int){
+        if ID != nil {
+            return
+        } else {
+            ID = newID
+        }
+        Swift.print("My ID is \(ID!)")
+        
+    }
+    
+    func getID() -> Int? {
+        return ID
     }
     
     func selectFileAtPosition(position: Int) -> Bool {

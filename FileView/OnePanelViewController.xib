@@ -26,7 +26,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="644" height="259"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView identifier="filesTable" verticalHuggingPriority="750" tag="1" allowsExpansionToolTips="YES" columnSelection="YES" autosaveColumns="NO" rowSizeStyle="automatic" headerView="ElK-5Z-39D" viewBased="YES" id="I22-ku-rr1">
+                            <tableView identifier="filesTable" verticalHuggingPriority="750" tag="1" allowsExpansionToolTips="YES" columnSelection="YES" autosaveColumns="NO" rowSizeStyle="automatic" headerView="ElK-5Z-39D" viewBased="YES" id="I22-ku-rr1" customClass="FileTableView" customModule="FileView" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="644" height="236"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>

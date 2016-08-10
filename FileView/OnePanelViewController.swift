@@ -32,6 +32,12 @@ class OnePanelViewController: NSViewController {
         }
     }
 	
+	var ID: Int? {
+		return (self.view as! OnePanelView).getID()
+	}
+	
+	var delegate: FileManagementDelegate?
+	
 	private let root: String = "/"
 	
 	private let upOneLevel: String = "..."
@@ -57,6 +63,7 @@ class OnePanelViewController: NSViewController {
         }
 		if (currentDirectoryLabel != nil) {currentDirectoryLabel.title = dataSource.currentDir}
 		if (selectedObjectLabel != nil) {updateStatus()}
+		(tableOutlet as! FileTableView).fileDelegate = self
 						
     }
 	
@@ -94,19 +101,14 @@ class OnePanelViewController: NSViewController {
 	private func selectFile(position: Int?){
 		
 		let filePosition: Int!
-		//print(position)
-		
 		if position != nil{
 			filePosition = position!
 		} else {
 			filePosition = dataSource.dirContents.count > 2 ? 2 : 0
 		}
-		//print(filePosition)
-		//if currentDirectory != root {
+		
 		(self.view as! OnePanelView).selectFileAtPosition(filePosition)
-		//} else {
-		//	(self.view as! OnePanelView).selectFileAtPosition(0)
-		//}
+		
 	}
 	
 	private func processElement(){
@@ -155,9 +157,6 @@ class OnePanelViewController: NSViewController {
 	
 	private func doQuickLook(){
 		if let panel = QLPreviewPanel.sharedPreviewPanel() {
-			
-			
-
 			panel.makeKeyAndOrderFront(self)
 		}
 		
@@ -175,7 +174,11 @@ class OnePanelViewController: NSViewController {
 		
 		switch Int(char) {
 		case NSF3FunctionKey:
-			doQuickLook()			
+			doQuickLook()
+		case NSF5FunctionKey:
+			delegate?.copyNow(dataSource.dirContents[tableOutlet.selectedRow].url, controller: self)
+		case NSF6FunctionKey:
+			delegate?.moveNow(dataSource.dirContents[tableOutlet.selectedRow].url, controller: self)
 		default:
 			interpretKeyEvents([theEvent])
 		}
@@ -191,6 +194,12 @@ class OnePanelViewController: NSViewController {
 	
 	override func deleteBackward(sender: AnyObject?){
 		stepUp()
+	}
+	
+	
+	override func mouseDown(theEvent: NSEvent) {
+		delegate?.setMeAsActivePanel(self)
+		self.nextResponder?.mouseDown(theEvent)
 	}
 	
 }
@@ -274,4 +283,25 @@ extension OnePanelViewController : QLPreviewPanelDataSource {
 		return nil
 	}
 	
+}
+
+extension OnePanelViewController: FilePanelController {
+	
+	func getSelectedFiles() -> [NSURL] {
+		var output: [NSURL] = []
+		for index in tableOutlet.selectedRowIndexes{
+			output.append(dataSource.dirContents[index].url)
+		}
+		return output
+	}
+	
+	func getFocus() -> Bool{
+		//let tableViewTag = 1
+		//self.view.window?.makeFirstResponder(self.view.viewWithTag(tableViewTag))
+		return (delegate?.setMeAsActivePanel(self))!
+	}
+	
+	func gotFocus() {
+		delegate?.markMeAsActivePanel(self)
+	}
 }

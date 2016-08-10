@@ -12,6 +12,9 @@
 		4C222EFB1D5088F600236B05 /* OnePanelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C222EF91D5088F600236B05 /* OnePanelViewController.xib */; };
 		4C222EFD1D50DCC600236B05 /* OnePanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C222EFC1D50DCC600236B05 /* OnePanelView.swift */; };
 		4C222EFF1D515C0900236B05 /* SplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C222EFE1D515C0900236B05 /* SplitView.swift */; };
+		4C41810A1D5B6D3700B477A1 /* FileTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4181091D5B6D3700B477A1 /* FileTableView.swift */; };
+		4CB7AA681D5A783D003A1E64 /* FileManagementDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB7AA671D5A783D003A1E64 /* FileManagementDelegate.swift */; };
+		4CB7AA6A1D5A873F003A1E64 /* FilePanelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB7AA691D5A873F003A1E64 /* FilePanelController.swift */; };
 		4CD25B511D55318700073F8D /* ToolbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD25B501D55318700073F8D /* ToolbarViewController.swift */; };
 		4CD25B551D55329B00073F8D /* HorisontalSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD25B541D55329B00073F8D /* HorisontalSplitViewController.swift */; };
 		4CFB53E51D4F651E00467D65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFB53E41D4F651E00467D65 /* AppDelegate.swift */; };
@@ -47,6 +50,9 @@
 		4C222EF91D5088F600236B05 /* OnePanelViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnePanelViewController.xib; sourceTree = "<group>"; };
 		4C222EFC1D50DCC600236B05 /* OnePanelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnePanelView.swift; sourceTree = "<group>"; };
 		4C222EFE1D515C0900236B05 /* SplitView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitView.swift; sourceTree = "<group>"; };
+		4C4181091D5B6D3700B477A1 /* FileTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileTableView.swift; sourceTree = "<group>"; };
+		4CB7AA671D5A783D003A1E64 /* FileManagementDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManagementDelegate.swift; sourceTree = "<group>"; };
+		4CB7AA691D5A873F003A1E64 /* FilePanelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilePanelController.swift; sourceTree = "<group>"; };
 		4CD25B501D55318700073F8D /* ToolbarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ToolbarViewController.swift; path = ../ToolbarViewController.swift; sourceTree = "<group>"; };
 		4CD25B541D55329B00073F8D /* HorisontalSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HorisontalSplitViewController.swift; path = ../HorisontalSplitViewController.swift; sourceTree = "<group>"; };
 		4CFB53E11D4F651E00467D65 /* FileView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FileView.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,8 +123,10 @@
 				4CD25B501D55318700073F8D /* ToolbarViewController.swift */,
 				4CFB53E41D4F651E00467D65 /* AppDelegate.swift */,
 				4CFB54111D4F6D6B00467D65 /* directoryLoader.swift */,
+				4CB7AA671D5A783D003A1E64 /* FileManagementDelegate.swift */,
 				4CFB540F1D4F6AA900467D65 /* SplitViewController.swift */,
 				4C222EFE1D515C0900236B05 /* SplitView.swift */,
+				4CB7AA691D5A873F003A1E64 /* FilePanelController.swift */,
 				4C222EF81D5088F600236B05 /* OnePanelViewController.swift */,
 				4C222EFC1D50DCC600236B05 /* OnePanelView.swift */,
 				4CFB53E61D4F651E00467D65 /* ViewController.swift */,
@@ -127,6 +135,7 @@
 				4CFB53EA1D4F651E00467D65 /* Main.storyboard */,
 				4CFB53ED1D4F651E00467D65 /* Info.plist */,
 				4C222EF91D5088F600236B05 /* OnePanelViewController.xib */,
+				4C4181091D5B6D3700B477A1 /* FileTableView.swift */,
 			);
 			path = FileView;
 			sourceTree = "<group>";
@@ -280,8 +289,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C41810A1D5B6D3700B477A1 /* FileTableView.swift in Sources */,
 				4CFB54121D4F6D6B00467D65 /* directoryLoader.swift in Sources */,
 				4C222EFF1D515C0900236B05 /* SplitView.swift in Sources */,
+				4CB7AA6A1D5A873F003A1E64 /* FilePanelController.swift in Sources */,
+				4CB7AA681D5A783D003A1E64 /* FileManagementDelegate.swift in Sources */,
 				4CFB53E71D4F651E00467D65 /* ViewController.swift in Sources */,
 				4CFB53E51D4F651E00467D65 /* AppDelegate.swift in Sources */,
 				4CFB54101D4F6AA900467D65 /* SplitViewController.swift in Sources */,

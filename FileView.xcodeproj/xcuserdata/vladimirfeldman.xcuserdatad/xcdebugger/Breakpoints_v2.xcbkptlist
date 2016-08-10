@@ -35,5 +35,68 @@
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FileView/OnePanelViewController.swift"
+            timestampString = "492532477.177419"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "305"
+            endingLineNumber = "305"
+            landmarkName = "getFocus()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FileView.OnePanelViewController.gotFocus () -&gt; ()"
+                  moduleName = "FileView"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vladimirfeldman/Dropbox/XCode/FileView/FileView/FileView/OnePanelViewController.swift"
+                  timestampString = "492532477.475577"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "307"
+                  endingLineNumber = "307"
+                  offsetFromSymbolStart = "26">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "protocol witness for FileView.FilePanelController.gotFocus () -&gt; () in conformance FileView.OnePanelViewController : FileView.FilePanelController in FileView"
+                  moduleName = "FileView"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vladimirfeldman/Dropbox/XCode/FileView/FileView/FileView/OnePanelViewController.swift"
+                  timestampString = "492532477.476897"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "306"
+                  endingLineNumber = "306"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "dynamic FileView.OnePanelViewController.gotFocus () -&gt; ()"
+                  moduleName = "FileView"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vladimirfeldman/Dropbox/XCode/FileView/FileView/FileView/OnePanelViewController.swift"
+                  timestampString = "492532477.477019"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "306"
+                  endingLineNumber = "306"
+                  offsetFromSymbolStart = "4">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

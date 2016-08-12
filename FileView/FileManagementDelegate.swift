@@ -9,10 +9,10 @@
 import Foundation
 import Cocoa
 
-protocol FileManagementDelegate {
-    func copyNow(fileUrl: NSURL, controller: FilePanelController) -> Bool
-    func moveNow(fileUrl: NSURL, controller: FilePanelController) -> Bool
-    func deleteNow(fileUrl: NSURL, controller: FilePanelController) -> Bool
-    func setMeAsActivePanel(controller: FilePanelController) -> Bool
-    func markMeAsActivePanel(controller: FilePanelController) -> Bool
+protocol FileManagementDelegate: class {
+    func copyNow(source: FilePanelController) -> Bool
+    func moveNow(source: FilePanelController) -> Bool
+    func deleteNow(source: FilePanelController) -> Bool
+    func setMeAsActivePanel(source: FilePanelController) -> Bool
+    func markMeAsActivePanel(source: FilePanelController) -> Bool
 }

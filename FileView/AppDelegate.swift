@@ -15,11 +15,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     var currentTable: Int = 0
     
-    private var panelViews: [NSView] = []
+    private var panelViews = [Int: OnePanelView]()
     
     private func addPanelView(panelView: NSView) {
-        (panelView as! OnePanelView).setID(panelViews.count)
-        panelViews.append(panelView)
+        //(panelView as! OnePanelView).setID(panelViews.count)
+        panelViews[(panelView as! OnePanelView).getID()!] = (panelView as! OnePanelView)
     }
     
     private func findPanelViews(theView: NSView){
@@ -31,13 +31,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func selectResponder(){
-        let theView = panelViews[currentTable] as! OnePanelView
-        theView.getFocus()
+        panelViews[currentTable]?.getFocus()
     }
     
     private func setSelectionForTables(){
-        (panelViews[0] as! OnePanelView).selectFileAtPosition(0)
-        (panelViews[1] as! OnePanelView).selectFileAtPosition(0)
+        panelViews[0]?.selectFileAtPosition(0)
+        panelViews[1]?.selectFileAtPosition(0)
     }
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {

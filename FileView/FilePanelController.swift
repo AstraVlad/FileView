@@ -8,9 +8,12 @@
 
 import Foundation
 
-protocol FilePanelController {
+protocol FilePanelController: class {
+    var delegate: FileManagementDelegate? {get set}
+    var ID: Int? {get set}
+    var currentDirectory: String {get set}
     func getSelectedFiles() -> [NSURL]
     func getFocus() -> Bool
     func gotFocus()
-    var ID: Int? {get}
+    func refresh()
 }

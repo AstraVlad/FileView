@@ -25,18 +25,27 @@ class OnePanelViewController: NSViewController {
 	
     var dataSource: DirectoryLoader!
 	
-	var currentDirectory: String = "/Users/vladimirfeldman/Pictures/" {
+	var currentDirectory: String = "/Users/vladimirfeldman/FileTest" {
         didSet {
             dataSource.currentDir = currentDirectory
+			currentDirectoryLabel.title = dataSource.currentDir
             tableOutlet.reloadData()
         }
     }
 	
+	var dirHistoryBack: [String] = []
+	var dirHistoryForward: [String] = []
+	
 	var ID: Int? {
-		return (self.view as! OnePanelView).getID()
+		set {
+			(self.view as! OnePanelView).setID(newValue!)
+		}
+		get {
+		  return (self.view as! OnePanelView).getID()
+		}
 	}
 	
-	var delegate: FileManagementDelegate?
+	weak var delegate: FileManagementDelegate?
 	
 	private let root: String = "/"
 	
@@ -64,7 +73,7 @@ class OnePanelViewController: NSViewController {
 		if (currentDirectoryLabel != nil) {currentDirectoryLabel.title = dataSource.currentDir}
 		if (selectedObjectLabel != nil) {updateStatus()}
 		(tableOutlet as! FileTableView).fileDelegate = self
-						
+		
     }
 	
 	private func calculateTotalSize() -> Int {
@@ -111,6 +120,10 @@ class OnePanelViewController: NSViewController {
 		
 	}
 	
+	private func openDir(directory: String){
+		
+	}
+	
 	private func processElement(){
 		
 		if tableOutlet.selectedRowIndexes.count > 1 {return}
@@ -128,10 +141,9 @@ class OnePanelViewController: NSViewController {
 			if (item.name  != root) && (item.name != upOneLevel) {
 				previousCursorPositions.append(tableOutlet.selectedRow)
 			}
+			
+			dirHistoryBack.append(currentDirectory)
 			currentDirectory = item.path
-			/*dataSource.currentDir = item.path
-			tableOutlet.reloadData()*/
-			currentDirectoryLabel.title = dataSource.currentDir
 			
 			if (item.name == upOneLevel) {
 				selectFile(previousCursorPositions.popLast())
@@ -176,9 +188,11 @@ class OnePanelViewController: NSViewController {
 		case NSF3FunctionKey:
 			doQuickLook()
 		case NSF5FunctionKey:
-			delegate?.copyNow(dataSource.dirContents[tableOutlet.selectedRow].url, controller: self)
+			delegate?.copyNow(self)
 		case NSF6FunctionKey:
-			delegate?.moveNow(dataSource.dirContents[tableOutlet.selectedRow].url, controller: self)
+			delegate?.moveNow(self)
+		case NSF8FunctionKey:
+			delegate?.deleteNow(self)
 		default:
 			interpretKeyEvents([theEvent])
 		}
@@ -196,6 +210,19 @@ class OnePanelViewController: NSViewController {
 		stepUp()
 	}
 	
+	override func moveLeft(sender: AnyObject?) {
+		if dirHistoryBack.count > 0 {
+			dirHistoryForward.append(currentDirectory)
+			currentDirectory = dirHistoryBack.popLast()!
+		}
+	}
+	
+	override func moveRight(sender: AnyObject?) {
+		if dirHistoryForward.count > 0 {
+			dirHistoryBack.append(currentDirectory)
+			currentDirectory = dirHistoryForward.popLast()!
+		}
+	}
 	
 	override func mouseDown(theEvent: NSEvent) {
 		delegate?.setMeAsActivePanel(self)
@@ -296,12 +323,17 @@ extension OnePanelViewController: FilePanelController {
 	}
 	
 	func getFocus() -> Bool{
-		//let tableViewTag = 1
-		//self.view.window?.makeFirstResponder(self.view.viewWithTag(tableViewTag))
 		return (delegate?.setMeAsActivePanel(self))!
 	}
 	
 	func gotFocus() {
 		delegate?.markMeAsActivePanel(self)
+	}
+	
+	func refresh(){
+		let oldSelection = tableOutlet.selectedRow
+		dataSource.reload()
+		tableOutlet.reloadData()
+		selectFile(oldSelection)
 	}
 }

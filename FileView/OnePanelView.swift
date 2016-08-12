@@ -25,8 +25,6 @@ class OnePanelView: NSView {
         } else {
             ID = newID
         }
-        Swift.print("My ID is \(ID!)")
-        
     }
     
     func getID() -> Int? {
@@ -36,10 +34,11 @@ class OnePanelView: NSView {
     func selectFileAtPosition(position: Int) -> Bool {
         
         let fileTable = self.viewWithTag(tableViewTag) as! NSTableView
-        if position <= fileTable.numberOfRows {
+        if position < fileTable.numberOfRows {
          fileTable.selectRowIndexes(NSIndexSet(index: position), byExtendingSelection: false)
          return true
         }
+        fileTable.selectRowIndexes(NSIndexSet(index: fileTable.numberOfRows-1), byExtendingSelection: false)
         return false
     }
     

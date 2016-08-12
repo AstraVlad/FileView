@@ -20,8 +20,8 @@ class PanelViewController: NSViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        leftPanelDir = DirectoryLoader(dirToLoad: "/users/vladimirfeldman/Documents")
-        rightPanelDir = DirectoryLoader(dirToLoad: "/users/vladimirfeldman/Documents")
+        leftPanelDir = DirectoryLoader("/users/vladimirfeldman/Documents")
+        rightPanelDir = DirectoryLoader("/users/vladimirfeldman/Documents")
        
         if leftPanelOutlet != nil {
           leftPanelOutlet.setDelegate(self)
@@ -80,7 +80,7 @@ extension PanelViewController : NSTableViewDataSource {
         if tableView.identifier == "leftTableID"{
             return (leftPanelDir.dirContents.count)
         } else if tableView.identifier == "rightTableID" {
-            return (rightPanelDir.dirContents.count-1)
+            return (rightPanelDir.dirContents.count)
         } else {
             return 0
         }
